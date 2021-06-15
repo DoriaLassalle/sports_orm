@@ -4,7 +4,120 @@
 		<title>Sports Leagues</title>
 	</head>
 	<body>
-		<h1>Leagues</h1>
+		<h1>1.-Baseball Leagues:</h1>
+		<ul>
+			{% for baseball in baseballLeagues %}
+				<li>{{baseball.name}}</li>
+			{% endfor %}
+		</ul>
+
+		<h1>2.- Women Leagues:</h1>
+		<ul>
+			{% for women in womenLeagues %}
+				<li>{{women.name}}</li>
+			{% endfor %}
+		</ul>
+
+		<h1>3.- Hockey Leagues:</h1>
+		<ul>
+			{% for hockey in hockeyLeagues %}
+				<li>{{hockey.name}}, {{hockey.sport}}</li>
+			{% endfor %}
+		</ul>
+
+		<h1>4. Anything but Football Leagues:</h1>
+		<ul>
+			{% for nofb in noFootballLeagues %}
+				<li>{{nofb.name}}, {{nofb.sport}}</li>
+			{% endfor %}
+		</ul>
+
+		<h1>5. All Conferences Leagues:</h1>
+		<ul>
+			{% for conf in conferenceLeagues %}
+				<li>{{conf.name}}</li>
+			{% endfor %}
+		</ul>
+
+		<h1>6. All Atlantic Leagues:</h1>
+		<ul>
+			{% for atlantic in atlanticLeagues %}
+				<li>{{atlantic.name}}</li>
+			{% endfor %}
+		</ul>
+
+		<h1>7. Dallas Teams:</h1>
+		<ul>
+			{% for dallas in dallasTeams %}
+				<li>{{dallas.team_name}}</li>
+			{% endfor %}
+		</ul>
+
+		<h1>8. Raptor Teams:</h1>
+		<ul>
+			{% for rap in raptorsTeams %}
+				<li>{{rap.location}} {{rap.team_name}}</li>
+			{% endfor %}
+		</ul>
+
+		<h1>9. City Teams:</h1>
+		<ul>
+			{% for city in cityTeams %}
+				<li>{{city.location}} {{city.team_name}}</li>
+			{% endfor %}
+		</ul>
+
+		<h1>10. T Name Teams:</h1>
+		<ul>
+			{% for t in tNameTeams %}
+				<li>{{t.location}} {{t.team_name}}</li>
+			{% endfor %}
+		</ul>
+
+		<h1>11. All Teams Alphabetical by Location:</h1>
+		<ul>
+			{% for team in orderedTeams %}
+				<li>{{team.location}} {{team.team_name}}</li>
+			{% endfor %}
+		</ul>
+
+		<h1>12. All Teams Alphabetical Inverse by Team Name:</h1>
+		<ul>
+			{% for team in inversedTeams %}
+				<li>{{team.location}} {{team.team_name}}</li>
+			{% endfor %}
+		</ul>
+
+		<h1>13. Cooper Players:</h1>
+		<ul>
+			{% for coop in cooperPlayers %}
+				<li>{{coop.first_name}} {{coop.last_name}}</li>
+			{% endfor %}
+		</ul>
+
+		<h1>14. Joshua Players:</h1>
+		<ul>
+			{% for josh in joshuaPlayers %}
+				<li>{{josh.first_name}} {{josh.last_name}}</li>
+			{% endfor %}
+		</ul>
+
+		<h1>15. Cooper But Joshua Players:</h1>
+		<ul>
+			{% for coop in cooperButJoshPlayers %}
+				<li>{{coop.first_name}} {{coop.last_name}}</li>
+			{% endfor %}
+		</ul>
+
+		<h1>16. Alexander & Wyatt Players:</h1>
+		<ul>
+			{% for player in wyattAlexPlayer %}
+				<li>{{player.first_name}} {{player.last_name}}</li>
+			{% endfor %}
+		</ul>
+		
+
+<!-- 		<h1>Leagues</h1>
 		<ol>
 			{% for league in leagues %}
 				<li>{{league.name}}</li>
@@ -27,6 +140,6 @@
 			{% empty %}
 				<p>No teams found.  Try <code>python manage.py loaddata data.json</code>, or, if that doesn't work, going <a href="{% url 'make_data' %}">here</a> (but be prepared to wait).</p>
 			{% endfor %}
-		</ol>
+		</ol> -->
 	</body>
 </html>

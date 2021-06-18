@@ -1,239 +1,379 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">			
+		
 		<title>Sports Leagues</title>
 
 		{% load django_bootstrap5 %}
 		{% bootstrap_css %}
+		{% bootstrap_javascript %}
+
+		
 	</head>
 	<body>
-		<h1 class="text-center my-3">Sports  ORM Assignment</h1>
-		<h1>First Part:</h1>
-		<h1>1. Baseball Leagues:</h1>
-		<ul>
-			{% for baseball in baseballLeagues %}
-				<li>{{baseball.name}}</li>
-			{% endfor %}
+		<h1 class="text-center mt-3 text-secondary bg-info p-4">Sports  ORM Assignment</h1>
+		<h2 class="text-center mb-5 text-secondary bg-info p-4">First Part:</h2>
+
+		<!-- primer contenido -->
+		<ul class="nav nav-tabs" id="myTab" role="tablist">
+			<li class="nav-item" role="presentation">
+				<button class="nav-link active" id="uno-tab" data-bs-toggle="tab" data-bs-target="#uno" type="button" role="tab" aria-controls="uno" aria-selected="true">1. Baseball Leagues:</button>
+			</li>
+			<li class="nav-item" role="presentation">
+				<button class="nav-link" id="dos-tab" data-bs-toggle="tab" data-bs-target="#dos" type="button" role="tab" aria-controls="dos" aria-selected="false">2. Women Leagues:</button>
+			</li>
+			<li class="nav-item" role="presentation">
+				<button class="nav-link" id="tres-tab" data-bs-toggle="tab" data-bs-target="#tres" type="button" role="tab" aria-controls="tres" aria-selected="false">3. Hockey Leagues:</button>
+			</li>
+			<li class="nav-item" role="presentation">
+				<button class="nav-link" id="cuatro-tab" data-bs-toggle="tab" data-bs-target="#cuatro" type="button" role="tab" aria-controls="cuatro" aria-selected="false">4. Anything but Football Leagues:</button>
+			</li>
+			<li class="nav-item" role="presentation">
+				<button class="nav-link" id="cinco-tab" data-bs-toggle="tab" data-bs-target="#cinco" type="button" role="tab" aria-controls="cinco" aria-selected="false">5. All Conferences Leagues:</button>
+			</li>
+			<li class="nav-item" role="presentation">
+				<button class="nav-link" id="seis-tab" data-bs-toggle="tab" data-bs-target="#seis" type="button" role="tab" aria-controls="seis" aria-selected="false">6. All Atlantic Leagues:</button>
+			</li>
 		</ul>
 
-		<h1>2. Women Leagues:</h1>
-		<ul>
-			{% for women in womenLeagues %}
-				<li>{{women.name}}</li>
-			{% endfor %}
+		<div class="tab-content border-bottom my-4" id="myTabContent">
+			<div class="tab-pane fade show active" id="uno" role="tabpanel" aria-labelledby="uno-tab">
+				<ul>
+					{% for baseball in baseballLeagues %}
+						<li>{{baseball.name}}</li>
+					{% endfor %}
+				</ul>
+			</div>
+			<div class="tab-pane fade" id="dos" role="tabpanel" aria-labelledby="dos-tab">
+				<ul>
+					{% for women in womenLeagues %}
+						<li>{{women.name}}</li>
+					{% endfor %}
+				</ul>
+			</div>
+			<div class="tab-pane fade" id="tres" role="tabpanel" aria-labelledby="tres-tab">
+				<ul>
+					{% for hockey in hockeyLeagues %}
+						<li>{{hockey.name}} - Class: {{hockey.sport}}</li>
+					{% endfor %}
+				</ul>
+			</div>
+			<div class="tab-pane fade" id="cuatro" role="tabpanel" aria-labelledby="cuatro-tab">
+				<ul>
+					{% for nofb in noFootballLeagues %}
+						<li>{{nofb.name}} - Sport:  {{nofb.sport}}</li>
+					{% endfor %}
+				</ul>
+			</div>
+			<div class="tab-pane fade" id="cinco" role="tabpanel" aria-labelledby="cinco-tab">
+				<ul>
+					{% for conf in conferenceLeagues %}
+						<li>{{conf.name}}</li>
+					{% endfor %}
+				</ul>
+			</div>
+			<div class="tab-pane fade" id="seis" role="tabpanel" aria-labelledby="seis-tab">
+				<ul>
+					{% for atlantic in atlanticLeagues %}
+						<li>{{atlantic.name}}</li>
+					{% endfor %}
+				</ul>
+			</div>			
+		</div>
+
+		<!-- Segundo contenido -->
+		<ul class="nav nav-tabs" id="myTab2" role="tablist">
+			<li class="nav-item" role="presentation">
+				<button class="nav-link active" id="siete-tab" data-bs-toggle="tab" data-bs-target="#siete" type="button" role="tab" aria-controls="siete" aria-selected="true">7. Dallas Teams:</button>
+			</li>
+			<li class="nav-item" role="presentation">
+				<button class="nav-link" id="ocho-tab" data-bs-toggle="tab" data-bs-target="#ocho" type="button" role="tab" aria-controls="ocho" aria-selected="false">8. Raptor Teams:</button>
+			</li>
+			<li class="nav-item" role="presentation">
+				<button class="nav-link" id="nueve-tab" data-bs-toggle="tab" data-bs-target="#nueve" type="button" role="tab" aria-controls="nueve" aria-selected="false">9. City Teams:</button>
+			</li>
+			<li class="nav-item" role="presentation">
+				<button class="nav-link" id="diez-tab" data-bs-toggle="tab" data-bs-target="#diez" type="button" role="tab" aria-controls="diez" aria-selected="false">10. T Name Teams:</button>
+			</li>
+			<li class="nav-item" role="presentation">
+				<button class="nav-link" id="once-tab" data-bs-toggle="tab" data-bs-target="#once" type="button" role="tab" aria-controls="once" aria-selected="false">11. All Teams Ordere by Location:</button>
+			</li>
+			<li class="nav-item" role="presentation">
+				<button class="nav-link" id="doce-tab" data-bs-toggle="tab" data-bs-target="#doce" type="button" role="tab" aria-controls="doce" aria-selected="false">12. All Teams Ordered Inverse by Team:</</button>
+			</li>
 		</ul>
 
-		<h1>3. Hockey Leagues:</h1>
-		<ul>
-			{% for hockey in hockeyLeagues %}
-				<li>{{hockey.name}} - Class: {{hockey.sport}}</li>
-			{% endfor %}
+		<div class="tab-content border-bottom my-4" id="myTabContent2">
+			<div class="tab-pane fade show active" id="siete" role="tabpanel" aria-labelledby="siete-tab">
+				<ul>
+					{% for dallas in dallasTeams %}
+						<li>{{dallas.location}} {{dallas.team_name}}</li>
+					{% endfor %}
+				</ul>
+			</div>
+			<div class="tab-pane fade" id="ocho" role="tabpanel" aria-labelledby="ocho-tab">
+				<ul>
+					{% for rap in raptorsTeams %}
+						<li>{{rap.location}} {{rap.team_name}}</li>
+					{% endfor %}
+				</ul>
+			</div>
+			<div class="tab-pane fade" id="nueve" role="tabpanel" aria-labelledby="nueve-tab">
+				<ul>
+					{% for city in cityTeams %}
+						<li>{{city.location}} {{city.team_name}}</li>
+					{% endfor %}
+				</ul>
+			</div>
+			<div class="tab-pane fade" id="diez" role="tabpanel" aria-labelledby="diez-tab">
+				<ul>
+					{% for t in tNameTeams %}
+						<li>{{t.location}} {{t.team_name}}</li>
+					{% endfor %}
+				</ul>
+			</div>
+			<div class="tab-pane fade" id="once" role="tabpanel" aria-labelledby="once-tab">
+				<ul>
+					{% for team in orderedTeams %}
+						<li>{{team.location}} {{team.team_name}}</li>
+					{% endfor %}
+				</ul>
+			</div>
+			<div class="tab-pane fade" id="doce" role="tabpanel" aria-labelledby="doce-tab">
+				<ul>
+					{% for team in inversedTeams %}
+						<li>{{team.location}} {{team.team_name}}</li>
+					{% endfor %}
+				</ul>
+			</div>
+		</div>
+
+		<!-- tercer contenido -->
+		<ul class="nav nav-tabs" id="myTab3" role="tablist">
+			<li class="nav-item" role="presentation">
+				<button class="nav-link active" id="trece-tab" data-bs-toggle="tab" data-bs-target="#trece" type="button" role="tab" aria-controls="trece" aria-selected="true">13. Cooper Players:</button>
+			</li>
+			<li class="nav-item" role="presentation">
+				<button class="nav-link" id="catorce-tab" data-bs-toggle="tab" data-bs-target="#catorce" type="button" role="tab" aria-controls="catorce" aria-selected="false">14. Joshua Players:</button>
+			</li>
+			<li class="nav-item" role="presentation">
+				<button class="nav-link" id="quince-tab" data-bs-toggle="tab" data-bs-target="#quince" type="button" role="tab" aria-controls="quince" aria-selected="false">15. Cooper But Joshua Players:</button>
+			</li>
+			<li class="nav-item" role="presentation">
+				<button class="nav-link" id="dieciseis-tab" data-bs-toggle="tab" data-bs-target="#dieciseis" type="button" role="tab" aria-controls="dieciseis" aria-selected="false">16. Alexander & Wyatt Players:</button>
+			</li>
 		</ul>
 
-		<h1>4. Anything but Football Leagues:</h1>
-		<ul>
-			{% for nofb in noFootballLeagues %}
-				<li>{{nofb.name}} - Sport:  {{nofb.sport}}</li>
-			{% endfor %}
+		<div class="tab-content border-bottom my-4" id="myTabContent3">
+			<div class="tab-pane fade show active" id="trece" role="tabpanel" aria-labelledby="trece-tab">
+				<ul>
+					{% for coop in cooperPlayers %}
+						<li>{{coop.first_name}} {{coop.last_name}}</li>
+					{% endfor %}
+				</ul>
+			</div>
+			<div class="tab-pane fade" id="catorce" role="tabpanel" aria-labelledby="catorce-tab">
+				<ul>
+					{% for josh in joshuaPlayers %}
+						<li>{{josh.first_name}} {{josh.last_name}}</li>
+					{% endfor %}
+				</ul>
+			</div>
+			<div class="tab-pane fade" id="quince" role="tabpanel" aria-labelledby="quince-tab">
+				<ul>
+					{% for coop in cooperButJoshPlayers %}
+						<li>{{coop.first_name}} {{coop.last_name}}</li>
+					{% endfor %}
+				</ul>
+			</div>
+			<div class="tab-pane fade" id="dieciseis" role="tabpanel" aria-labelledby="dieciseis-tab">
+				<ul>
+					{% for player in wyattAlexPlayer %}
+						<li>{{player.first_name}} {{player.last_name}}</li>
+					{% endfor %}
+				</ul>
+			</div>
+		</div>				
+
+		<!-- SEGUNDA PARTE Sport II-->
+
+		<h2 class="text-center mb-5 text-secondary bg-info p-4">Second Part:</h2>
+
+		<!-- cuarto contenido -->
+		<ul class="nav nav-tabs" id="myTab4" role="tablist">
+			<li class="nav-item" role="presentation">
+				<button class="nav-link active" id="one-tab" data-bs-toggle="tab" data-bs-target="#one" type="button" role="tab" aria-controls="one" aria-selected="true">1. Atlantic Soccer Conference Teams</button>
+			</li>
+			<li class="nav-item" role="presentation">
+				<button class="nav-link" id="two-tab" data-bs-toggle="tab" data-bs-target="#two" type="button" role="tab" aria-controls="two" aria-selected="false">2. Boston Penguins Current Players</button>
+			</li>
+			<li class="nav-item" role="presentation">
+				<button class="nav-link" id="three-tab" data-bs-toggle="tab" data-bs-target="#three" type="button" role="tab" aria-controls="three" aria-selected="false">3. Int. Collegiate Baseball Conference Current Players</button>
+			</li>			
 		</ul>
 
-		<h1>5. All Conferences Leagues:</h1>
-		<ul>
-			{% for conf in conferenceLeagues %}
-				<li>{{conf.name}}</li>
-			{% endfor %}
+		<div class="tab-content border-bottom my-4" id="myTabContent4">
+			<div class="tab-pane fade show active" id="one" role="tabpanel" aria-labelledby="one-tab">
+				<ul>
+					{% for team in atlanticTeams %}
+						<li>{{team.location}} {{team.team_name}}</li>
+					{% endfor %}
+				</ul>
+			</div>
+			<div class="tab-pane fade" id="two" role="tabpanel" aria-labelledby="two-tab">
+				<ul>
+					{% for player in pengPlayers %}
+						<li>{{player.first_name}} {{player.last_name}}</li>
+					{% endfor %}
+				</ul>
+			</div>
+			<div class="tab-pane fade" id="three" role="tabpanel" aria-labelledby="three-tab">
+				<ul>
+					{% for oneplayer in players %}
+						<li>{{oneplayer.first_name}} {{oneplayer.last_name}} - Team: {{oneplayer.curr_team.location}} {{oneplayer.curr_team.team_name}}</li>
+					{% endfor %}
+				</ul>
+			</div>
+		</div>
+
+		<!-- quinto contenido -->
+		<ul class="nav nav-tabs" id="myTab5" role="tablist">
+			<li class="nav-item" role="presentation">
+				<button class="nav-link active" id="four-tab" data-bs-toggle="tab" data-bs-target="#four" type="button" role="tab" aria-controls="four" aria-selected="true">4. American Amateur Football Conference ""Lopez" Current Players</button>
+			</li> 
+			<li class="nav-item" role="presentation">
+				<button class="nav-link" id="five-tab" data-bs-toggle="tab" data-bs-target="#five" type="button" role="tab" aria-controls="five" aria-selected="false">5. All Football Players</button>
+			</li>
+			<li class="nav-item" role="presentation">
+				<button class="nav-link" id="six-tab" data-bs-toggle="tab" data-bs-target="#six" type="button" role="tab" aria-controls="six" aria-selected="false">6. All Teams With Sophia Players</button>
+			</li>
+			<li class="nav-item" role="presentation">
+				<button class="nav-link" id="seven-tab" data-bs-toggle="tab" data-bs-target="#seven" type="button" role="tab" aria-controls="seven" aria-selected="false">7. All Leagues With Sophia Players</button>
+			</li>		
 		</ul>
 
-		<h1>6. All Atlantic Leagues:</h1>
-		<ul>
-			{% for atlantic in atlanticLeagues %}
-				<li>{{atlantic.name}}</li>
-			{% endfor %}
+		<div class="tab-content border-bottom my-4" id="myTabContent5">
+			<div class="tab-pane fade show active" id="four" role="tabpanel" aria-labelledby="four-tab">
+				<ul>
+					{% for oneplayer in players2 %}
+						<li>{{oneplayer.first_name}} {{oneplayer.last_name}} - Team: {{oneplayer.curr_team.location}} {{oneplayer.curr_team.team_name}}</li>
+					{% endfor %}
+				</ul>
+			</div>
+			<div class="tab-pane fade" id="six" role="tabpanel" aria-labelledby="six-tab">
+				<ul>
+					{% for team in sofiaTeams %}
+						<li>{{team.location}} {{team.team_name}}</li>
+					{% endfor %}
+				</ul>
+			</div>
+			<div class="tab-pane fade" id="seven" role="tabpanel" aria-labelledby="seven-tab">
+				<ul>
+					{% for league in sofiaLeagues %}
+						<li>{{league.name}} </li>
+					{% endfor %}
+				</ul>
+			</div>
+		</div>
+
+		<!-- sexto contenido -->
+		<ul class="nav nav-tabs" id="myTab6" role="tablist">
+			<li class="nav-item" role="presentation">
+				<button class="nav-link active" id="eight-tab" data-bs-toggle="tab" data-bs-target="#eight" type="button" role="tab" aria-controls="eight" aria-selected="true">8. All "Flores" Players Not in Washington Roughriders</button>
+			</li> 
+			<li class="nav-item" role="presentation">
+				<button class="nav-link" id="nine-tab" data-bs-toggle="tab" data-bs-target="#nine" type="button" role="tab" aria-controls="nine" aria-selected="false">9. All Teams "Samuel Evans" has Played in</button>
+			</li>
+			<li class="nav-item" role="presentation">
+				<button class="nav-link" id="ten-tab" data-bs-toggle="tab" data-bs-target="#ten" type="button" role="tab" aria-controls="ten" aria-selected="false">10. All Manitoba Tiger Cats Players</button>
+			</li>
+			<li class="nav-item" role="presentation">
+				<button class="nav-link" id="eleven-tab" data-bs-toggle="tab" data-bs-target="#eleven" type="button" role="tab" aria-controls="eleven" aria-selected="false">11. Wichita Vikings Old Players</button>
+			</li>
 		</ul>
 
-		<h1>7. Dallas Teams:</h1>
-		<ul>
-			{% for dallas in dallasTeams %}
-				<li>{{dallas.location}} {{dallas.team_name}}</li>
-			{% endfor %}
+		<div class="tab-content border-bottom my-4" id="myTabContent6">
+			<div class="tab-pane fade show active" id="eight" role="tabpanel" aria-labelledby="eight-tab">
+				<ul>
+					{% for player in flores %}
+						<li>{{player.first_name}} {{player.last_name}} - Team: {{player.curr_team.location}} {{player.curr_team.team_name}}</li>
+					{% endfor %}
+				</ul>
+			</div>
+			<div class="tab-pane fade" id="nine" role="tabpanel" aria-labelledby="nine-tab">
+				<ul>
+					{% for team in samuelTeams %}
+						<li>{{team.location}} {{team.team_name}}</li>
+					{% endfor %}
+				</ul>
+			</div>
+			<div class="tab-pane fade" id="ten" role="tabpanel" aria-labelledby="ten-tab">
+				<ul>
+					{% for player in allTigerCatsPlayers %}
+						<li>{{player.first_name}} {{player.last_name}}</li>
+					{% endfor %}
+				</ul>
+			</div>
+			<div class="tab-pane fade" id="eleven" role="tabpanel" aria-labelledby="eleven-tab">
+				<ul>
+					{% for player in oldWichitaPlayers %}
+						<li>{{player.first_name}} {{player.last_name}}</li>
+					{% endfor %}
+				</ul>
+			</div>
+		</div>
+
+		<!-- septimo contenido -->
+		<ul class="nav nav-tabs" id="myTab7" role="tablist">
+			<li class="nav-item" role="presentation">
+				<button class="nav-link active" id="twelve-tab" data-bs-toggle="tab" data-bs-target="#twelve" type="button" role="tab" aria-controls="twelve" aria-selected="true">12. "Jacob Gray" Past Teams</button>
+			</li> 
+			<li class="nav-item" role="presentation">
+				<button class="nav-link" id="thirteen-tab" data-bs-toggle="tab" data-bs-target="#thirteen" type="button" role="tab" aria-controls="thirteen" aria-selected="false">13. Amateur Baseball Atlantic Federation "Joshua" Players</button>
+			</li>
+			<li class="nav-item" role="presentation">
+				<button class="nav-link" id="fourteen-tab" data-bs-toggle="tab" data-bs-target="#fourteen" type="button" role="tab" aria-controls="fourteen" aria-selected="false">14. 12 or More Players Teams</button>
+			</li>
+			<li class="nav-item" role="presentation">
+				<button class="nav-link" id="fifteen-tab" data-bs-toggle="tab" data-bs-target="#fifteen" type="button" role="tab" aria-controls="fifteen" aria-selected="false">15. Team Players Count Ordered by Quantity</button>
+			</li>
 		</ul>
 
-		<h1>8. Raptor Teams:</h1>
-		<ul>
-			{% for rap in raptorsTeams %}
-				<li>{{rap.location}} {{rap.team_name}}</li>
-			{% endfor %}
-		</ul>
+		<div class="tab-content border-bottom my-4" id="myTabContent7">
+			<div class="tab-pane fade show active" id="twelve" role="tabpanel" aria-labelledby="twelve-tab">
+				<ul>
+					{% for team in jacobTeams %}
+						<li>{{team.location}} {{team.team_name}}</li>
+					{% endfor %}
+				</ul>
+			</div>
+			<div class="tab-pane fade" id="thirteen" role="tabpanel" aria-labelledby="thirteen-tab">
+				<ul>
+					{% for player in joshuaPlayers2 %}
+						<li>{{player.first_name}} {{player.last_name}}</li>
+					{% endfor %}
+				</ul>
+			</div>
+			<div class="tab-pane fade" id="fourteen" role="tabpanel" aria-labelledby="fourteen-tab">
+				<ul>
+					{% for team in bigTeams %}
+						<li>{{team.location}} {{team.team_name}} - Has {{team.num_players}} players</li>
+					{% endfor %}
+				</ul>
+			</div>
+			<div class="tab-pane fade" id="fifteen" role="tabpanel" aria-labelledby="fifteen-tab">
+				<ul>
+					{% for player in allPlayersAndTeams %}
+						<li>{{player.first_name}} {{player.last_name}} - Teams Qty: {{player.num_teams}}</li>
+					{% endfor %}
+				</ul>
+			</div>
+		</div>
 
-		<h1>9. City Teams:</h1>
-		<ul>
-			{% for city in cityTeams %}
-				<li>{{city.location}} {{city.team_name}}</li>
-			{% endfor %}
-		</ul>
-
-		<h1>10. T Name Teams:</h1>
-		<ul>
-			{% for t in tNameTeams %}
-				<li>{{t.location}} {{t.team_name}}</li>
-			{% endfor %}
-		</ul>
-
-		<h1>11. All Teams Alphabetical by Location:</h1>
-		<ul>
-			{% for team in orderedTeams %}
-				<li>{{team.location}} {{team.team_name}}</li>
-			{% endfor %}
-		</ul>
-
-		<h1>12. All Teams Alphabetical Inverse by Team Name:</h1>
-		<ul>
-			{% for team in inversedTeams %}
-				<li>{{team.location}} {{team.team_name}}</li>
-			{% endfor %}
-		</ul>
-
-		<h1>13. Cooper Players:</h1>
-		<ul>
-			{% for coop in cooperPlayers %}
-				<li>{{coop.first_name}} {{coop.last_name}}</li>
-			{% endfor %}
-		</ul>
-
-		<h1>14. Joshua Players:</h1>
-		<ul>
-			{% for josh in joshuaPlayers %}
-				<li>{{josh.first_name}} {{josh.last_name}}</li>
-			{% endfor %}
-		</ul>
-
-		<h1>15. Cooper But Joshua Players:</h1>
-		<ul>
-			{% for coop in cooperButJoshPlayers %}
-				<li>{{coop.first_name}} {{coop.last_name}}</li>
-			{% endfor %}
-		</ul>
-
-		<h1>16. Alexander & Wyatt Players:</h1>
-		<ul>
-			{% for player in wyattAlexPlayer %}
-				<li>{{player.first_name}} {{player.last_name}}</li>
-			{% endfor %}
-		</ul>
-
-		<h1>********** END First Part *********</h1>
-
-		<hr><!-- SEGUNDA PARTE -->
-
-		<h1>Second Part:</h1>
-
-		<h2>1. Atlantic Soccer Conference Teams</h2>
-		<ul>
-			{% for team in atlanticTeams %}
-				<li>{{team.location}} {{team.team_name}}</li>
-			{% endfor %}
-		</ul>
-
-		<h2>2. Boston Penguins Current Players</h2>
-		<ul>
-			{% for player in pengPlayers %}
-				<li>{{player.first_name}} {{player.last_name}}</li>
-			{% endfor %}
-		</ul>
-
-		<h2>3. International Collegiate Baseball Conference Current Players</h2>
-		<ul>
-			{% for oneplayer in players %}
-				<li>{{oneplayer.first_name}} {{oneplayer.last_name}} - Team: {{oneplayer.curr_team.location}} {{oneplayer.curr_team.team_name}}</li>
-			{% endfor %}
-		</ul>
-
-		<h2>4. American Conference of Amateur Football last name Lopez Current Players</h2>
-		<ul>
-			{% for oneplayer in players2 %}
-				<li>{{oneplayer.first_name}} {{oneplayer.last_name}} - Team: {{oneplayer.curr_team.location}} {{oneplayer.curr_team.team_name}}</li>
-			{% endfor %}
-		</ul>
-
-		<h2>5. All Football Players</h2>
-		<ul>
-			{% for fplayer in footballPlayers %}
-				<li>{{fplayer.first_name}} {{fplayer.last_name}} - Team: {{fplayer.curr_team.location}} {{fplayer.curr_team.team_name}} </li>
-			{% endfor %}
-		</ul>
-
-		<h2>6. All Teams With Sophia Players</h2>
-		<ul>
-			{% for team in sofiaTeams %}
-				<li>{{team.location}} {{team.team_name}}</li>
-			{% endfor %}
-		</ul>
-
-		<h2>7. All Leagues With Sophia Players</h2>
-		<ul>
-			{% for league in sofiaLeagues %}
-				<li>{{league.name}} </li>
-			{% endfor %}
-		</ul>
-
-		<h2>8. All Flores Last Name Players Not in Washington Roughriders</h2>
-		<ul>
-			{% for player in flores %}
-				<li>{{player.first_name}} {{player.last_name}} - Team: {{player.curr_team.location}} {{player.curr_team.team_name}}</li>
-			{% endfor %}
-		</ul>
-
-		<h2>9. All Teams Samuel Evans has Played in</h2>
-		<ul>
-			{% for team in samuelTeams %}
-				<li>{{team.location}} {{team.team_name}}</li>
-			{% endfor %}
-		</ul>
-
-		<h2>10. All Players form Manitoba Tiger Cats</h2>
-		<ul>
-			{% for player in allTigerCatsPlayers %}
-				<li>{{player.first_name}} {{player.last_name}}</li>
-			{% endfor %}
-		</ul>
-
-		<h2>11. Old Players from Wichita Vikings</h2>
-		<ul>
-			{% for player in oldWichitaPlayers %}
-				<li>{{player.first_name}} {{player.last_name}}</li>
-			{% endfor %}
-		</ul>
-
-		<h2>12. Jacob Gray Old Teams </h2>
-		<ul>
-			{% for team in jacobTeams %}
-				<li>{{team.location}} {{team.team_name}}</li>
-			{% endfor %}
-		</ul>
-
-		<h2>13. Joshua Players in Atlantic Federation of Amateur Baseball Players</h2>
-		<ul>
-			{% for player in joshuaPlayers2 %}
-				<li>{{player.first_name}} {{player.last_name}}</li>
-			{% endfor %}
-		</ul>
-
-		<h2>14. All Teams with 12 or More Players</h2>
-		<ul>
-			{% for team in bigTeams %}
-				<li>{{team.location}} {{team.team_name}} - Has {{team.num_players}} players</li>
-			{% endfor %}
-		</ul>
-
-		<h2>15. All Players and their Teams Count Ordered by Quantity</h2>
-		<ul>
-			{% for player in allPlayersAndTeams %}
-				<li>{{player.first_name}} {{player.last_name}} - Teams Qty: {{player.num_teams}}</li>
-			{% endfor %}
-		</ul>
-
-		<h1>********* END **********</h1>
-
+		<h2 class="text-center mb-5 text-secondary bg-info p-4">* END *<h2>
 
 
 

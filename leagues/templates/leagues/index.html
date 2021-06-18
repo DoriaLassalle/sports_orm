@@ -99,7 +99,7 @@
 				<button class="nav-link" id="diez-tab" data-bs-toggle="tab" data-bs-target="#diez" type="button" role="tab" aria-controls="diez" aria-selected="false">10. T Name Teams:</button>
 			</li>
 			<li class="nav-item" role="presentation">
-				<button class="nav-link" id="once-tab" data-bs-toggle="tab" data-bs-target="#once" type="button" role="tab" aria-controls="once" aria-selected="false">11. All Teams Ordere by Location:</button>
+				<button class="nav-link" id="once-tab" data-bs-toggle="tab" data-bs-target="#once" type="button" role="tab" aria-controls="once" aria-selected="false">11. All Teams Ordered by Location:</button>
 			</li>
 			<li class="nav-item" role="presentation">
 				<button class="nav-link" id="doce-tab" data-bs-toggle="tab" data-bs-target="#doce" type="button" role="tab" aria-controls="doce" aria-selected="false">12. All Teams Ordered Inverse by Team:</</button>
@@ -260,6 +260,13 @@
 				<ul>
 					{% for oneplayer in players2 %}
 						<li>{{oneplayer.first_name}} {{oneplayer.last_name}} - Team: {{oneplayer.curr_team.location}} {{oneplayer.curr_team.team_name}}</li>
+					{% endfor %}
+				</ul>
+			</div>
+			<div class="tab-pane fade" id="five" role="tabpanel" aria-labelledby="five-tab">
+				<ul>
+					{% for player in footballPlayers %}
+						<li>{{player.first_name}} {{player.last_name}} - Team: {{player.curr_team.location}} {{player.curr_team.team_name}}</li>
 					{% endfor %}
 				</ul>
 			</div>
